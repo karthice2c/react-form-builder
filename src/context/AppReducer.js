@@ -4,9 +4,9 @@ export default (state, action) => {
     case "REMOVE_FORM":
       return state.filter((form) => {
         return form.id !== action.payload;
-      });      
+      });
     case "ADD_FORM":
-      return [action.payload, ...state];       
+      return [action.payload, ...state];
     case "EDIT_FORM":
       const updateForm = action.payload;
 

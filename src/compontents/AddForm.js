@@ -60,7 +60,7 @@ export const AddForm = () => {
     [selectedForm?.fields]
   );
   const saveForm = useCallback(() => {
-    if (selectedForm.name == "") {
+    if (selectedForm?.name == null) {
       alert("Please enter a form name");
       return;
     }

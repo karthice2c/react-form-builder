@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { makeStyles } from "@mui/styles";
 import List from "@mui/material/List";
@@ -54,6 +54,10 @@ export const FormList = () => {
   // the search result
   const [SearchResults, setSearchResults] = useState(state);
 
+  useEffect(() => {
+    setSearchResults(state);
+  }, []);
+
   const searchfilter = (e) => {
     const keyword = e.target.value;
 
@@ -89,7 +93,7 @@ export const FormList = () => {
         />
       </Card>
       <List className={classes.listRoot}>
-        {SearchResults.map((item, index) => {
+        {state.map((item, index) => {
           const labelId = `checkbox-list-label-${index}`;
           return (
             <ListItem key={index} role={undefined} dense button divider>
@@ -107,7 +111,10 @@ export const FormList = () => {
                   </Link>
                 </IconButton>
                 <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon onClick={() => removeForm(item.id)} />
+                  <DeleteIcon
+                    onClick={() => removeForm(item.id)}
+                    color="danger"
+                  />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
