@@ -66,7 +66,7 @@ export const EditForm = () => {
     [selectedForm?.fields]
   );
   const saveForm = useCallback(() => {
-    if (selectedForm.name == "") {
+    if (selectedForm.name === null || selectedForm.name == "") {
       alert("Please enter a form name");
       return;
     }
